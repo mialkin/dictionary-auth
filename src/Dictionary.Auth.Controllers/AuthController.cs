@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Dictionary.Auth.UseCases.Auth.Commands;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Dictionary.Auth.Controllers;
 
-[ApiController]
-[Route("api/[controller]")]
-public class AuthController : ControllerBase
+public class AuthController : ApplicationController
 {
     [HttpPost("login")]
     public async Task<IActionResult> Login(
@@ -12,8 +11,7 @@ public class AuthController : ControllerBase
         [FromQuery] string password,
         CancellationToken cancellationToken)
     {
-        await Task.Yield();
-
-        return Ok();
+        var result = await Sender.Send(new LoginCommand(username, password), cancellationToken);
+        return Ok(result);
     }
 }

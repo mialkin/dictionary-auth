@@ -1,3 +1,4 @@
+using Dictionary.Auth.Configurations;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,9 @@ services.AddControllers();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen(options => { options.DescribeAllParametersInCamelCase(); });
 services.AddRouting(options => options.LowercaseUrls = true);
+
+services.ConfigureMediatr();
+services.ConfigureAdminSettings();
 
 var app = builder.Build();
 
