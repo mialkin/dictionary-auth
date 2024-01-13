@@ -7,12 +7,8 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Dictionary.Auth.UseCases\Dictionary.Auth.UseCases.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="CSharpFunctionalExtensions" Version="2.40.3" />
+    </ItemGroup>
 
 </Project>

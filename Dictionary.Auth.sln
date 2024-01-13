@@ -16,6 +16,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary.Auth", "src\Dict
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary.Auth.Controllers", "src\Dictionary.Auth.Controllers\Dictionary.Auth.Controllers.csproj", "{D30A4CB4-3127-430F-A702-42ACF5DB90CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary.Auth.Domain", "src\Dictionary.Auth.Domain\Dictionary.Auth.Domain.csproj", "{4C3EE50A-980F-4A0F-B24C-712629A7E681}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary.Auth.UseCases", "src\Dictionary.Auth.UseCases\Dictionary.Auth.UseCases.csproj", "{491915E0-109C-4D8F-91B0-09895B00071B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +28,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F20C684D-9574-4030-ABDB-6796359FDAC0} = {94BE18BC-9808-4F1F-B0C7-78277D6D7264}
 		{D30A4CB4-3127-430F-A702-42ACF5DB90CA} = {94BE18BC-9808-4F1F-B0C7-78277D6D7264}
+		{4C3EE50A-980F-4A0F-B24C-712629A7E681} = {94BE18BC-9808-4F1F-B0C7-78277D6D7264}
+		{491915E0-109C-4D8F-91B0-09895B00071B} = {94BE18BC-9808-4F1F-B0C7-78277D6D7264}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F20C684D-9574-4030-ABDB-6796359FDAC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -34,5 +40,13 @@ Global
 		{D30A4CB4-3127-430F-A702-42ACF5DB90CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D30A4CB4-3127-430F-A702-42ACF5DB90CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D30A4CB4-3127-430F-A702-42ACF5DB90CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C3EE50A-980F-4A0F-B24C-712629A7E681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C3EE50A-980F-4A0F-B24C-712629A7E681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C3EE50A-980F-4A0F-B24C-712629A7E681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C3EE50A-980F-4A0F-B24C-712629A7E681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{491915E0-109C-4D8F-91B0-09895B00071B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{491915E0-109C-4D8F-91B0-09895B00071B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{491915E0-109C-4D8F-91B0-09895B00071B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{491915E0-109C-4D8F-91B0-09895B00071B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
