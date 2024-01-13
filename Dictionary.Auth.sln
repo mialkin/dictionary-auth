@@ -1,8 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{94BE18BC-9808-4F1F-B0C7-78277D6D7264}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA934B7B-4707-4C7F-B6F8-BA9BBE90DC51}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.dockerignore = .dockerignore
+		.editorconfig = .editorconfig
+		.gitlab-ci.yml = .gitlab-ci.yml
+		Dockerfile = Dockerfile
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary.Auth", "src\Dictionary.Auth\Dictionary.Auth.csproj", "{F20C684D-9574-4030-ABDB-6796359FDAC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F20C684D-9574-4030-ABDB-6796359FDAC0} = {94BE18BC-9808-4F1F-B0C7-78277D6D7264}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F20C684D-9574-4030-ABDB-6796359FDAC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F20C684D-9574-4030-ABDB-6796359FDAC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F20C684D-9574-4030-ABDB-6796359FDAC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F20C684D-9574-4030-ABDB-6796359FDAC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

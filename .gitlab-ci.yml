@@ -1,0 +1,38 @@
+variables:
+  DOTNET_SDK_IMAGE: mcr.microsoft.com/dotnet/sdk:8.0
+  NUGET_PACKAGES_DIRECTORY: .nuget
+  MIGRATIONS_DOCKER_IMAGE_NAME: mialkin/dictionary-auth
+  DOCKER_IMAGE_NAME: mialkin/dictionary-auth
+
+stages:
+  - build
+  - publish
+
+.restore_packages: &restore_nuget_packages
+  - dotnet restore --packages $NUGET_PACKAGES_DIRECTORY
+
+build:
+  stage: build
+  interruptible: true
+  image: $DOTNET_SDK_IMAGE
+  script:
+    - *restore_nuget_packages
+    - dotnet build --no-restore --configuration Release
+  cache:
+    key: $CI_JOB_STAGE-$CI_COMMIT_REF_SLUG
+    paths:
+      - $NUGET_PACKAGES_DIRECTORY
+
+publish:
+  stage: publish
+  interruptible: true
+  image: docker:stable
+  services:
+    - docker:dind # Use Kaniko? https://docs.gitlab.com/ee/ci/docker/using_kaniko.html
+  script:
+    - docker build --tag ${DOCKER_IMAGE_NAME}:${CI_COMMIT_TAG} .
+    - docker login --username ${DOCKER_REGISTRY_USERNAME} --password ${DOCKER_REGISTRY_PASSWORD}
+    - docker push ${DOCKER_IMAGE_NAME}:${CI_COMMIT_TAG}
+    - docker logout
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^\d+.\d+.\d+$/
