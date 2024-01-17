@@ -1,7 +1,7 @@
 using Dictionary.Auth.UseCases.Auth;
 using Microsoft.Extensions.Options;
 
-namespace Dictionary.Auth.Configurations;
+namespace Dictionary.Auth.Api.Configurations;
 
 public static class AdminSettingsConfiguration
 {

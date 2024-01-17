@@ -1,6 +1,6 @@
 using Dictionary.Auth.UseCases.Auth.Commands;
 
-namespace Dictionary.Auth.Configurations;
+namespace Dictionary.Auth.Api.Configurations;
 
 public static class MediatrConfiguration
 {

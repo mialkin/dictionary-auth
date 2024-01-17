@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary.Auth", "src\Dictionary.Auth\Dictionary.Auth.csproj", "{F20C684D-9574-4030-ABDB-6796359FDAC0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary.Auth.Api", "src\Dictionary.Auth.Api\Dictionary.Auth.Api.csproj", "{F20C684D-9574-4030-ABDB-6796359FDAC0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dictionary.Auth.Controllers", "src\Dictionary.Auth.Controllers\Dictionary.Auth.Controllers.csproj", "{D30A4CB4-3127-430F-A702-42ACF5DB90CA}"
 EndProject

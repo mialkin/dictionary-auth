@@ -1,8 +1,7 @@
 variables:
   DOTNET_SDK_IMAGE: mcr.microsoft.com/dotnet/sdk:8.0
   NUGET_PACKAGES_DIRECTORY: .nuget
-  MIGRATIONS_DOCKER_IMAGE_NAME: mialkin/dictionary-auth
-  DOCKER_IMAGE_NAME: mialkin/dictionary-auth
+  DOCKER_IMAGE_NAME: mialkin/dictionary-auth-api
 
 stages:
   - build

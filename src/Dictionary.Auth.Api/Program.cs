@@ -1,4 +1,4 @@
-using Dictionary.Auth.Configurations;
+using Dictionary.Auth.Api.Configurations;
 using Microsoft.OpenApi.Models;
 using Serilog;
 
