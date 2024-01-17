@@ -11,4 +11,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /application
 COPY --from=build-environment /application/release .
 
-ENTRYPOINT ["./Dictionary.Auth"]
+ENTRYPOINT ["./Dictionary.Auth.Api"]
