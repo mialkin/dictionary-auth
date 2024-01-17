@@ -1,4 +1,5 @@
 using Dictionary.Auth.Configurations;
+using Microsoft.OpenApi.Models;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +15,11 @@ var services = builder.Services;
 services.AddControllers();
 services.AddRouting(options => options.LowercaseUrls = true);
 
-services.AddSwaggerGen(options => { options.DescribeAllParametersInCamelCase(); });
+services.AddSwaggerGen(options =>
+{
+    options.DescribeAllParametersInCamelCase();
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Dictionary auth API", Version = "v1" });
+});
 
 services.ConfigureMediatr();
 services.ConfigureAdminSettings();
@@ -28,6 +33,7 @@ application.UseSwaggerUI(options =>
 {
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
     options.RoutePrefix = string.Empty;
+    options.DocumentTitle = "Dictionary auth API";
 });
 
 application.MapControllers();
