@@ -12,25 +12,25 @@ builder.Host.UseSerilog((context, configuration) =>
 var services = builder.Services;
 
 services.AddControllers();
-services.AddEndpointsApiExplorer();
-services.AddSwaggerGen(options => { options.DescribeAllParametersInCamelCase(); });
 services.AddRouting(options => options.LowercaseUrls = true);
+
+services.AddSwaggerGen(options => { options.DescribeAllParametersInCamelCase(); });
 
 services.ConfigureMediatr();
 services.ConfigureAdminSettings();
 
-var app = builder.Build();
+var application = builder.Build();
 
-app.UseSerilogRequestLogging();
+application.UseSerilogRequestLogging();
 
-app.UseSwagger();
-app.UseSwaggerUI(options =>
+application.UseSwagger();
+application.UseSwaggerUI(options =>
 {
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
     options.RoutePrefix = string.Empty;
 });
 
-app.UseRouting();
-app.MapControllers();
+application.MapControllers();
+application.UseRouting();
 
-app.Run();
+application.Run();
