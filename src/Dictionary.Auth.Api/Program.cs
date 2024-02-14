@@ -1,3 +1,4 @@
+using System.Net;
 using Dictionary.Auth.Api.Configurations;
 using Dictionary.Auth.Controllers.Auth.Constants;
 using Microsoft.OpenApi.Models;
@@ -19,10 +20,14 @@ services.AddAuthentication(DefaultAuthenticationScheme.Name)
         options.Cookie.Name = "Slova";
         options.ExpireTimeSpan = TimeSpan.FromDays(30);
         options.SlidingExpiration = true;
+        options.Events.OnRedirectToLogin = context =>
+        {
+            context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+            return Task.CompletedTask;
+        };
     });
 
 services.AddAuthorization();
-
 services.AddControllers();
 services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -37,6 +42,7 @@ services.ConfigureAdminSettings();
 
 var application = builder.Build();
 
+application.UseRouting();
 application.UseAuthentication();
 application.UseAuthorization();
 
@@ -51,6 +57,5 @@ application.UseSwaggerUI(options =>
 });
 
 application.MapControllers();
-application.UseRouting();
 
 application.Run();

@@ -1,7 +1,8 @@
 @baseUrl=http://localhost:2200/api
 
-### Authenticate
+### Log in
 
+# @no-cookie-jar
 POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
@@ -9,3 +10,9 @@ Content-Type: application/json
     "username": "admin",
     "password": "password"
 }
+
+### Log out
+
+# @no-cookie-jar
+GET {{baseUrl}}/auth/logout
+Cookie: Slova=CfDJ8B44SOkacnBHmknIh4ZbslUgtFjYdqVlrk0QY2URyEnqVhJj6X-n6b9ln-VuEEifWfikln6WXG-bhTMqiXNeTa9v89Qdod8Qp1ONzOKaKXhXp3CXZ3iKK5j-SYRRQhzz_7bobDKS-O8fJIv7t7P5jbKTsZ4IRoJu9pI2ICWdjLcdsIbqnmR7qrfAZCHF93vrBfFyYSLFE3Jeaip-97nHlDfjGY21z30qu0Soc0HAKHQxBcGRG8QQUQb4ClA7TWwtcjXFr_8ViMWZWdR51DzabHJHNL_H39i-LLOeOUOE3nl7I2u8mtSp_ETLLXNB5hY5bA;
