@@ -17,7 +17,7 @@ var services = builder.Services;
 services.AddAuthentication(DefaultAuthenticationScheme.Name)
     .AddCookie(DefaultAuthenticationScheme.Name, options =>
     {
-        options.Cookie.Name = "Slova";
+        options.Cookie.Name = "Dictionary.Session";
         options.ExpireTimeSpan = TimeSpan.FromDays(30);
         options.SlidingExpiration = true;
         options.Events.OnRedirectToLogin = context =>
