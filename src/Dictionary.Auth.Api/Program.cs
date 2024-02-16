@@ -18,8 +18,7 @@ services.AddAuthentication(DefaultAuthenticationScheme.Name)
     .AddCookie(DefaultAuthenticationScheme.Name, options =>
     {
         options.Cookie.Name = "Dictionary.Session";
-        options.ExpireTimeSpan = TimeSpan.FromDays(30);
-        options.SlidingExpiration = true;
+        options.ExpireTimeSpan = TimeSpan.FromDays(15);
         options.Events.OnRedirectToLogin = context =>
         {
             context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;

@@ -15,6 +15,9 @@ public class AuthController : ApplicationController
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request, CancellationToken cancellationToken)
     {
+        // TODO protect against brute-force attack:
+        // Consider adding: 1) metrics + alerts 2) captcha
+
         var result = await Sender.Send(new LoginCommand(request.Username, request.Password), cancellationToken);
 
         if (!result)
