@@ -8,12 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dictionary.Auth.Domain\Dictionary.Auth.Domain.csproj"/>
+    <ProjectReference Include="..\Dictionary.Auth.Domain\Dictionary.Auth.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="12.2.0"/>
-    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.1"/>
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.1" />
   </ItemGroup>
 
 </Project>
