@@ -14,6 +14,7 @@ builder.Host.UseSerilog((context, configuration) =>
 
 var services = builder.Services;
 
+services.ConfigureDataProtection(builder.Configuration);
 services.AddAuthentication(DefaultAuthenticationScheme.Name)
     .AddCookie(DefaultAuthenticationScheme.Name, options =>
     {
