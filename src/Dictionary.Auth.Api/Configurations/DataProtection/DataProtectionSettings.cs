@@ -1,4 +1,4 @@
-namespace Dictionary.Auth.Api.Settings;
+namespace Dictionary.Auth.Api.Configurations.DataProtection;
 
 public class DataProtectionSettings
 {

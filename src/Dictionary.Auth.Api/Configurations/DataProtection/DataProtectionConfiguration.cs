@@ -1,8 +1,7 @@
-using Dictionary.Auth.Api.Settings;
 using Microsoft.AspNetCore.DataProtection;
 using StackExchange.Redis;
 
-namespace Dictionary.Auth.Api.Configurations;
+namespace Dictionary.Auth.Api.Configurations.DataProtection;
 
 public static class DataProtectionConfiguration
 {

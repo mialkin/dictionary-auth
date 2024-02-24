@@ -1,5 +1,7 @@
 using System.Net;
 using Dictionary.Auth.Api.Configurations;
+using Dictionary.Auth.Api.Configurations.DataProtection;
+using Dictionary.Auth.Api.Settings;
 using Dictionary.Auth.Controllers.Auth.Constants;
 using Microsoft.OpenApi.Models;
 using Serilog;
