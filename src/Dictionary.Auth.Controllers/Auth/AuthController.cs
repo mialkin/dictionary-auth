@@ -1,10 +1,12 @@
 ﻿using System.Security.Claims;
 using Dictionary.Auth.Controllers.Auth.Constants;
 using Dictionary.Auth.Controllers.Auth.Requests;
+using Dictionary.Auth.Controllers.Settings;
 using Dictionary.Auth.UseCases.Auth.Commands;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace Dictionary.Auth.Controllers.Auth;
 
@@ -37,13 +39,13 @@ public class AuthController : ApplicationController
     }
 
     [HttpGet("logout")]
-    public async Task<IActionResult> Logout()
+    public async Task<IActionResult> Logout([FromServices] IOptions<LogoutSettings> options)
     {
         await HttpContext.SignOutAsync(
             scheme: DefaultAuthenticationScheme.Name,
             properties: new AuthenticationProperties { IsPersistent = true }
         );
 
-        return Ok();
+        return Redirect(options.Value.RedirectUri!);
     }
 }

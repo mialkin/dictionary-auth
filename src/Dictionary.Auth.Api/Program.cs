@@ -1,8 +1,5 @@
-using System.Net;
 using Dictionary.Auth.Api.Configurations;
-using Dictionary.Auth.Api.Configurations.DataProtection;
 using Dictionary.Auth.Api.Settings;
-using Dictionary.Auth.Controllers.Auth.Constants;
 using Microsoft.OpenApi.Models;
 using Serilog;
 
@@ -16,20 +13,7 @@ builder.Host.UseSerilog((context, configuration) =>
 
 var services = builder.Services;
 
-services.ConfigureDataProtection(builder.Configuration);
-services.AddAuthentication(DefaultAuthenticationScheme.Name)
-    .AddCookie(DefaultAuthenticationScheme.Name, options =>
-    {
-        options.Cookie.Name = "Dictionary.Session";
-        options.ExpireTimeSpan = TimeSpan.FromDays(15);
-        options.Events.OnRedirectToLogin = context =>
-        {
-            context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-            return Task.CompletedTask;
-        };
-    });
-
-services.AddAuthorization();
+services.ConfigureAuth(builder.Configuration);
 services.AddControllers();
 services.AddRouting(options => options.LowercaseUrls = true);
 
