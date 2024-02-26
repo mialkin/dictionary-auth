@@ -38,7 +38,7 @@ public class AuthController : ApplicationController
         return Ok(result);
     }
 
-    [HttpGet("logout")]
+    [HttpPost("logout")]
     public async Task<IActionResult> Logout([FromServices] IOptions<LogoutSettings> options)
     {
         await HttpContext.SignOutAsync(
