@@ -9,7 +9,7 @@ internal class LoginCommandHandler(IOptions<AdminSettings> adminOptions) : IRequ
 
     public Task<bool> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-        var result = request.Username == AdminSettings.Username
+        var result = request.Email == AdminSettings.Email
                      && request.Password == AdminSettings.Password;
 
         return Task.FromResult(result);

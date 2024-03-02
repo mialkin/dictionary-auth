@@ -14,8 +14,8 @@ public static class AdminSettingsConfiguration
             {
                 var failureMessages = new List<string>();
 
-                if (string.IsNullOrWhiteSpace(x.Username))
-                    failureMessages.Add($"'{nameof(x.Username)}' property is empty");
+                if (string.IsNullOrWhiteSpace(x.Email))
+                    failureMessages.Add($"'{nameof(x.Email)}' property is empty");
 
                 if (string.IsNullOrWhiteSpace(x.Password))
                     failureMessages.Add($"'{nameof(x.Password)}' property is empty");
