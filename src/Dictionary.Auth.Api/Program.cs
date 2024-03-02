@@ -14,7 +14,7 @@ builder.Host.UseSerilog((context, configuration) =>
 var services = builder.Services;
 
 services.ConfigureAuth(builder.Configuration);
-services.AddControllers();
+services.AddControllersWithViews();
 services.AddRouting(options => options.LowercaseUrls = true);
 
 services.AddSwaggerGen(options =>
@@ -42,6 +42,6 @@ application.UseSwaggerUI(options =>
     options.DocumentTitle = "Dictionary auth API";
 });
 
-application.MapControllers();
+application.MapControllerRoute(name: "default", pattern: "{controller=Login}/{action=Index}");
 
 application.Run();

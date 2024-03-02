@@ -1,8 +1,9 @@
-﻿using System.Security.Claims;
+using System.Security.Claims;
 using Dictionary.Auth.Controllers.Auth.Constants;
 using Dictionary.Auth.Controllers.Auth.Requests;
 using Dictionary.Auth.Controllers.Settings;
 using Dictionary.Auth.UseCases.Auth.Commands;
+using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,19 +12,30 @@ using Microsoft.Extensions.Options;
 namespace Dictionary.Auth.Controllers.Auth;
 
 [Authorize]
-public class AuthController : ApplicationController
+public class LoginController(ISender sender) : Controller
 {
+    [HttpGet]
     [AllowAnonymous]
-    [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginRequest request, CancellationToken cancellationToken)
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [AllowAnonymous]
+    public async Task<IActionResult> Index(
+        [FromServices] IOptions<LoginSettings> options,
+        [FromForm] LoginRequest request, CancellationToken cancellationToken)
     {
         // TODO protect against brute-force attack:
         // Consider adding: 1) metrics + alerts 2) captcha
-
-        var result = await Sender.Send(new LoginCommand(request.Username, request.Password), cancellationToken);
+        var result = await sender.Send(new LoginCommand(request.Username, request.Password), cancellationToken);
 
         if (!result)
-            return BadRequest("Invalid credentials");
+        {
+            ViewBag.ErrorMessage = "Invalid credentials";
+            return View();
+        }
 
         await HttpContext.SignInAsync(
             principal: new ClaimsPrincipal(
@@ -32,17 +44,6 @@ public class AuthController : ApplicationController
                     authenticationType: DefaultAuthenticationScheme.Name
                 )
             ),
-            properties: new AuthenticationProperties { IsPersistent = true }
-        );
-
-        return Ok(result);
-    }
-
-    [HttpPost("logout")]
-    public async Task<IActionResult> Logout([FromServices] IOptions<LogoutSettings> options)
-    {
-        await HttpContext.SignOutAsync(
-            scheme: DefaultAuthenticationScheme.Name,
             properties: new AuthenticationProperties { IsPersistent = true }
         );
 

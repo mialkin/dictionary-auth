@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Страница входа";
+}
+
+<form method="post">
+    <div>
+        @ViewBag.ErrorMessage
+    </div>
+    <div>
+        <input placeholder="Имя пользователя"
+               type="text"
+               name="username"/>
+    </div>
+    <div>
+        <input placeholder="Пароль"
+               type="text"
+               name="password"/>
+    </div>
+    <div>
+        <button>Войти</button>
+    </div>
+</form>
