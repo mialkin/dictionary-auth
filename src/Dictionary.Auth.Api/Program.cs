@@ -42,6 +42,6 @@ application.UseSwaggerUI(options =>
     options.DocumentTitle = "Dictionary auth API";
 });
 
-application.MapControllerRoute(name: "default", pattern: "{controller=Login}/{action=Index}");
+application.MapControllerRoute(name: "default", pattern: "{controller=Auth}/{action=Login}");
 
 application.Run();

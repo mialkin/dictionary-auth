@@ -1,7 +1,7 @@
 using System.Net;
 using Dictionary.Auth.Api.Configurations.DataProtection;
 using Dictionary.Auth.Controllers.Auth.Constants;
-using Dictionary.Auth.Controllers.Settings;
+using Dictionary.Auth.Controllers.Auth.Settings;
 using Microsoft.Extensions.Options;
 
 namespace Dictionary.Auth.Api.Configurations;
@@ -27,28 +27,11 @@ public static class AuthConfiguration
         services.AddAuthorization();
 
         services
-            .AddOptions<LoginSettings>()
-            .BindConfiguration(nameof(LoginSettings))
+            .AddOptions<AuthSettings>()
+            .BindConfiguration(nameof(AuthSettings))
             .Validate(x =>
             {
-                const string optionsName = nameof(LoginSettings);
-
-                if (string.IsNullOrWhiteSpace(x.RedirectUri))
-                    throw new OptionsValidationException(
-                        optionsName,
-                        optionsType: typeof(string),
-                        failureMessages: new[] { $"'{nameof(x.RedirectUri)}' property of '{optionsName}' is empty" });
-
-                return true;
-            })
-            .ValidateOnStart();
-
-        services
-            .AddOptions<LogoutSettings>()
-            .BindConfiguration(nameof(LogoutSettings))
-            .Validate(x =>
-            {
-                const string optionsName = nameof(LogoutSettings);
+                const string optionsName = nameof(AuthSettings);
 
                 if (string.IsNullOrWhiteSpace(x.RedirectUri))
                     throw new OptionsValidationException(
