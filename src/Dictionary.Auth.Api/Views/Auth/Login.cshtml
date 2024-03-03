@@ -1,18 +1,22 @@
-﻿@{
-    ViewData["Title"] = "Страница входа";
-}
-
+﻿<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Страница входа</title>
+</head>
+<body>
 <form method="post">
     <div>
         @ViewBag.ErrorMessage
     </div>
-    <div>
+    <div style="margin-bottom: 5px;">
         <input placeholder="Электронная почта"
                type="text"
                name="login"
                autocomplete="username"/>
     </div>
-    <div>
+    <div style="margin-bottom: 5px;">
         <input placeholder="Пароль"
                type="password"
                name="password"
@@ -22,3 +26,5 @@
         <input type="submit" value="Войти"/>
     </div>
 </form>
+</body>
+</html>
