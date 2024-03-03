@@ -26,11 +26,12 @@ public class AuthController(ISender sender) : Controller
     [AllowAnonymous]
     public async Task<IActionResult> Login(
         [FromServices] IOptions<AuthSettings> options,
-        [FromForm] LoginRequest request, CancellationToken cancellationToken)
+        [FromForm] LoginRequest request,
+        CancellationToken cancellationToken)
     {
         // TODO protect against brute-force attack:
         // Consider adding: 1) metrics + alerts 2) captcha
-        var result = await sender.Send(new LoginCommand(request.Email, request.Password), cancellationToken);
+        var result = await sender.Send(new LoginCommand(request.Login, request.Password), cancellationToken);
 
         if (!result)
         {
@@ -41,7 +42,7 @@ public class AuthController(ISender sender) : Controller
         await HttpContext.SignInAsync(
             principal: new ClaimsPrincipal(
                 new ClaimsIdentity(
-                    claims: new[] { new Claim(type: ClaimTypes.Name, value: request.Email) },
+                    claims: new[] { new Claim(type: ClaimTypes.Name, value: request.Login) },
                     authenticationType: DefaultAuthenticationScheme.Name
                 )
             ),

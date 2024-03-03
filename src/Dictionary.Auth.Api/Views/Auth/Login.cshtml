@@ -2,22 +2,20 @@
     ViewData["Title"] = "Страница входа";
 }
 
-<form id="login" method="post">
+<form method="post">
     <div>
         @ViewBag.ErrorMessage
     </div>
     <div>
         <input placeholder="Электронная почта"
-               type="email"
-               name="email"
-               id="email"
-               autocomplete="email"/>
+               type="text"
+               name="login"
+               autocomplete="username"/>
     </div>
     <div>
         <input placeholder="Пароль"
-               type="text"
+               type="password"
                name="password"
-               id="password"
                autocomplete="current-password"/>
     </div>
     <div>
