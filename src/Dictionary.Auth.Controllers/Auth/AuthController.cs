@@ -12,22 +12,23 @@ using Microsoft.Extensions.Options;
 namespace Dictionary.Auth.Controllers.Auth;
 
 [Authorize]
-[Route("[controller]")]
-public class AuthController(ISender sender) : Controller
+public class AuthController(ISender sender, IOptions<AuthSettings> options) : Controller
 {
-    [HttpGet("login")]
+    [HttpGet("/login")]
     [AllowAnonymous]
     public IActionResult Login()
     {
+        if (User.Identity is { IsAuthenticated: true })
+        {
+            return Redirect(options.Value.LoginRedirectUri!);
+        }
+
         return View();
     }
 
-    [HttpPost("login")]
+    [HttpPost("/login")]
     [AllowAnonymous]
-    public async Task<IActionResult> Login(
-        [FromServices] IOptions<AuthSettings> options,
-        [FromForm] LoginRequest request,
-        CancellationToken cancellationToken)
+    public async Task<IActionResult> Login([FromForm] LoginRequest request, CancellationToken cancellationToken)
     {
         // TODO protect against brute-force attack:
         // Consider adding: 1) metrics + alerts 2) captcha
@@ -49,17 +50,17 @@ public class AuthController(ISender sender) : Controller
             properties: new AuthenticationProperties { IsPersistent = true }
         );
 
-        return Redirect(options.Value.RedirectUri!);
+        return Redirect(options.Value.LoginRedirectUri!);
     }
 
-    [HttpPost("logout")]
-    public async Task<IActionResult> Logout([FromServices] IOptions<AuthSettings> options)
+    [HttpPost("/logout")]
+    public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync(
             scheme: DefaultAuthenticationScheme.Name,
             properties: new AuthenticationProperties { IsPersistent = true }
         );
 
-        return Redirect(options.Value.RedirectUri!);
+        return Redirect(options.Value.LogoutRedirectUri!);
     }
 }

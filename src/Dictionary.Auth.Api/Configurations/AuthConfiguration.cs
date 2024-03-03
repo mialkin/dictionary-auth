@@ -33,11 +33,23 @@ public static class AuthConfiguration
             {
                 const string optionsName = nameof(AuthSettings);
 
-                if (string.IsNullOrWhiteSpace(x.RedirectUri))
+                if (string.IsNullOrWhiteSpace(x.LoginRedirectUri))
                     throw new OptionsValidationException(
                         optionsName,
                         optionsType: typeof(string),
-                        failureMessages: new[] { $"'{nameof(x.RedirectUri)}' property of '{optionsName}' is empty" });
+                        failureMessages: new[]
+                        {
+                            $"'{nameof(x.LoginRedirectUri)}' property of '{optionsName}' is empty"
+                        });
+
+                if (string.IsNullOrWhiteSpace(x.LogoutRedirectUri))
+                    throw new OptionsValidationException(
+                        optionsName,
+                        optionsType: typeof(string),
+                        failureMessages: new[]
+                        {
+                            $"'{nameof(x.LogoutRedirectUri)}' property of '{optionsName}' is empty"
+                        });
 
                 return true;
             })
