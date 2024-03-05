@@ -1,24 +1,32 @@
 ﻿@{
-    ViewData["Title"] = "Страница входа";
+    ViewData["Title"] = "Вход";
 }
 
-<form method="post">
+@section styles
+{
+    <link rel="stylesheet" href="~/login/css/login.css">
+}
+
+<div class="container">
     <div>
         @ViewBag.ErrorMessage
     </div>
-    <div style="margin-bottom: 5px;">
-        <input placeholder="Электронная почта"
-               type="text"
-               name="login"
-               autocomplete="username"/>
-    </div>
-    <div style="margin-bottom: 5px;">
-        <input placeholder="Пароль"
-               type="password"
-               name="password"
-               autocomplete="current-password"/>
-    </div>
-    <div>
-        <input type="submit" value="Войти"/>
-    </div>
-</form>
+
+    <form method="post">
+        <div>
+            <input placeholder="Электронная почта"
+                   type="text"
+                   name="login"
+                   autocomplete="username"/>
+        </div>
+        <div>
+            <input placeholder="Пароль"
+                   type="password"
+                   name="password"
+                   autocomplete="current-password"/>
+        </div>
+        <div>
+            <input type="submit" value="Войти"/>
+        </div>
+    </form>
+</div>
