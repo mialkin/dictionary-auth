@@ -28,6 +28,7 @@ services.ConfigureAdminSettings();
 
 var application = builder.Build();
 
+application.UseStaticFiles();
 application.UseRouting();
 application.UseAuthentication();
 application.UseAuthorization();

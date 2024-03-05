@@ -1,11 +1,7 @@
-﻿<!doctype html>
-<html lang="en-US">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width"/>
-    <title>Страница входа</title>
-</head>
-<body>
+﻿@{
+    ViewData["Title"] = "Страница входа";
+}
+
 <form method="post">
     <div>
         @ViewBag.ErrorMessage
@@ -26,5 +22,3 @@
         <input type="submit" value="Войти"/>
     </div>
 </form>
-</body>
-</html>
